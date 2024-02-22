@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
 import { Alert, Button, Modal, TextInput } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   getDownloadURL,
   getStorage,
-  uploadBytesResumable,
   ref,
+  uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
@@ -61,11 +61,12 @@ export default function DashProfile() {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
         setImageFileUploadProgress(progress.toFixed(0));
       },
       (error) => {
         setImageFileUploadError(
-          "Could not upload image(File must be less than 2MB)"
+          "Could not upload image (File must be less than 2MB)"
         );
         setImageFileUploadProgress(null);
         setImageFile(null);
@@ -153,9 +154,8 @@ export default function DashProfile() {
       console.log(error.message);
     }
   };
-
   return (
-    <div className="ma-w-lg mx-auto p-3 w-full">
+    <div className="max-w-lg mx-auto p-3 w-full">
       <h1 className="my-7 text-center font-semibold text-3xl">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
@@ -183,7 +183,9 @@ export default function DashProfile() {
                   left: 0,
                 },
                 path: {
-                  stroke: `rgba(62,152,199, ${imageFileUploadProgress / 100})`,
+                  stroke: `rgba(62, 152, 199, ${
+                    imageFileUploadProgress / 100
+                  })`,
                 },
               }}
             />
@@ -279,7 +281,7 @@ export default function DashProfile() {
             </h3>
             <div className="flex justify-center gap-4">
               <Button color="failure" onClick={handleDeleteUser}>
-                Yes, I&apos;m sure
+                Yes, I@apos;m sure
               </Button>
               <Button color="gray" onClick={() => setShowModal(false)}>
                 No, cancel
