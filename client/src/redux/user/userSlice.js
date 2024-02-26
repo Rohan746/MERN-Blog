@@ -53,7 +53,7 @@ const userSlice = createSlice({
       state.currentUser = null;
       state.error = null;
       state.loading = false;
-    }
+    },
   },
 });
 
@@ -67,7 +67,7 @@ export const {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFailure,
-  signoutSuccess
+  signoutSuccess,
 } = userSlice.actions;
 
 export default userSlice.reducer;
