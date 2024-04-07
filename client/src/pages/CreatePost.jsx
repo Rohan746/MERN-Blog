@@ -22,7 +22,7 @@ export default function CreatePost() {
 
   const navigate = useNavigate();
 
-  const handleUpdloadImage = async () => {
+  const handleUploadImage = async () => {
     try {
       if (!file) {
         setImageUploadError('Please select an image');
@@ -40,7 +40,7 @@ export default function CreatePost() {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setImageUploadProgress(progress.toFixed(0));
         },
-        (error) => {
+        () => {
           setImageUploadError('Image upload failed');
           setImageUploadProgress(null);
         },
@@ -58,6 +58,8 @@ export default function CreatePost() {
       console.log(error);
     }
   };
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -82,6 +84,7 @@ export default function CreatePost() {
       setPublishError('Something went wrong');
     }
   };
+
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
       <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
@@ -119,7 +122,7 @@ export default function CreatePost() {
             gradientDuoTone='purpleToBlue'
             size='sm'
             outline
-            onClick={handleUpdloadImage}
+            onClick={handleUploadImage}
             disabled={imageUploadProgress}
           >
             {imageUploadProgress ? (
