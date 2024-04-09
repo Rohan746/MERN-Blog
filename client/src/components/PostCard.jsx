@@ -1,4 +1,15 @@
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+
+// Define PropTypes for the PostCard component
+PostCard.propTypes = {
+  post: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default function PostCard({ post }) {
   return (
